@@ -39,7 +39,48 @@ Max Drawdown:          1.8%
 ---
 
 ### Project 2: Black-Scholes Option Pricer
-*Coming soon*
+Prices European call and put options using the Black-Scholes model with full Greeks computation and put-call parity verification.
+
+**Concepts:** `<cmath>` (exp, log, sqrt), normal distribution, OOP, financial mathematics
+
+**Features:**
+- European call and put pricing
+- Full Greeks surface: Delta, Gamma, Theta, Vega, Rho
+- Put-call parity verification
+- Multiple market support (tested with NGX and US equities)
+
+**Sample output:**
+```
+==========================================
+     BLACK-SCHOLES OPTION PRICER
+==========================================
+Stock Price (S):     55.5000
+Strike Price (K):    55.0000
+Time to Expiry (T):  0.2500 years
+Risk-Free Rate (r):  11.5000%
+Volatility (sigma):  39.8700%
+------------------------------------------
+Call Price:           5.4315
+Put Price:            3.3727
+------------------------------------------
+           GREEKS
+------------------------------------------
+Call Delta:           0.6138
+Put Delta:            -0.3862
+Gamma:                0.0346
+Call Theta (daily):   -0.0322
+Put Theta (daily):    -0.0154
+Vega (per 1% vol):    0.1062
+Call Rho (per 1%):    0.0716
+Put Rho (per 1%):     -0.0620
+------------------------------------------
+   PUT-CALL PARITY CHECK
+------------------------------------------
+C - P =               2.0587
+S - K*e^(-rT) =       2.0587
+Difference:           0.0000
+==========================================
+```
 
 ---
 
@@ -60,9 +101,13 @@ Max Drawdown:          1.8%
 
 ### Compile any project
 ```bash
-cd MarketDataAnalyzer
+cd Project1-MarketDataAnalyzer
 g++ MarketDataAnalyzer.cpp -o MarketDataAnalyzer
 ./MarketDataAnalyzer
+
+cd Project2-BlackScholes
+g++ BlackScholes.cpp -o BlackScholes
+./BlackScholes
 ```
 
 ## Technical Skills Demonstrated
@@ -77,3 +122,5 @@ g++ MarketDataAnalyzer.cpp -o MarketDataAnalyzer
 Ayomide — Aspiring Quantitative Risk Analyst
 
 Built as part of a structured C++ learning journey targeting quantitative finance and market risk roles.
+
+
