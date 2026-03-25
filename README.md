@@ -85,7 +85,41 @@ Difference:           0.0000
 ---
 
 ### Project 3: Monte Carlo VaR Engine
-*Coming soon*
+Simulates thousands of portfolio scenarios using random number generation to calculate Value at Risk and Expected Shortfall at multiple confidence levels.
+
+**Concepts:** `<random>` (Mersenne Twister, normal distribution), Monte Carlo simulation, VaR, Expected Shortfall, scenario analysis
+
+**Features:**
+- Monte Carlo simulation with configurable scenarios (default: 10,000)
+- VaR at 90%, 95%, and 99% confidence levels
+- Expected Shortfall (Conditional VaR) at all levels
+- Scenario distribution analysis (loss/gain breakdown)
+- Extreme scenario identification
+- Reproducible results via seeded random generation
+
+**Sample output:**
+```
+==========================================
+       MONTE CARLO VaR ENGINE
+==========================================
+Portfolio Value:      10000000.00
+Daily Mean Return:    1.08%
+Daily Volatility:     2.51%
+Simulations:          10000
+------------------------------------------
+     VALUE AT RISK (VaR)
+------------------------------------------
+VaR (90%):            212811.42
+VaR (95%):            308689.47
+VaR (99%):            492814.73
+------------------------------------------
+     EXPECTED SHORTFALL (ES)
+------------------------------------------
+ES  (90%):            334089.17
+ES  (95%):            412048.80
+ES  (99%):            569834.19
+==========================================
+```
 
 ---
 
@@ -108,7 +142,18 @@ g++ MarketDataAnalyzer.cpp -o MarketDataAnalyzer
 cd Project2-BlackScholes
 g++ BlackScholes.cpp -o BlackScholes
 ./BlackScholes
+
+cd Project3-MonteCarloVaR
+g++ MonteCarloVaR.cpp -o MonteCarloVaR
+./MonteCarloVaR
 ```
+
+## How the Projects Connect
+
+The projects form an integrated risk analysis pipeline:
+1. **Project 1** reads market data and calculates volatility (39.87%) and mean return (1.08%)
+2. **Project 2** uses that volatility as an input to price options on the same stock
+3. **Project 3** uses the same return statistics to simulate portfolio risk via Monte Carlo
 
 ## Technical Skills Demonstrated
 - Modern C++ (C++11/14): smart pointers, move semantics, lambdas
@@ -116,11 +161,10 @@ g++ BlackScholes.cpp -o BlackScholes
 - STL: vectors, maps, algorithms, iterators
 - File I/O and data parsing
 - Mathematical computing: volatility, Black-Scholes, Monte Carlo simulation
+- Random number generation and statistical simulation
 - Memory management: dynamic allocation, RAII
 
 ## Author
 Ayomide — Aspiring Quantitative Risk Analyst
 
 Built as part of a structured C++ learning journey targeting quantitative finance and market risk roles.
-
-
