@@ -124,29 +124,49 @@ ES  (99%):            569834.19
 ---
 
 ### Project 4: Mini Risk System
-*Coming soon*
+An integrated risk analysis system that combines all three previous projects into a single unified pipeline. Takes user input, loads market data, and generates a comprehensive risk report covering statistical analysis, option pricing, and Monte Carlo VaR.
+
+**Concepts:** System integration, modular class design, user interaction, data flow between components, software architecture
+
+**Features:** Interactive user input for all parameters, CSV market data loading and parsing, statistical risk metrics (volatility, drawdown, return analysis), Black-Scholes option pricing with Greeks, Monte Carlo VaR and Expected Shortfall, unified four-section risk report.
+
+**Sample output:**
+```
+##############################################
+       INTEGRATED RISK REPORT
+       GTCO
+##############################################
+
+[1] MARKET DATA SUMMARY
+Period:              2025-01-02 to 2025-01-29
+Trading Days:        20
+Total Return:        21.9780%
+
+[2] RISK STATISTICS
+Avg Daily Return:    1.0807%
+Daily Volatility:    2.5113%
+Annual Volatility:   39.8659%
+Max Drawdown:        1.8000%
+
+[3] OPTION PRICING (Black-Scholes)
+Call Price:          5.4310
+Put Price:           3.3723
+Call Delta:          0.6138
+Gamma:               0.0346
+
+[4] MONTE CARLO VALUE AT RISK
+Portfolio Value:     10000000.00
+VaR (95%):           308841.65
+VaR (99%):           493063.41
+ES  (95%):           412255.15
+ES  (99%):           570123.22
+
+##############################################
+          END OF REPORT
+##############################################
+```
 
 ---
-
-## How to Run
-
-### Prerequisites
-- C++ compiler (g++ with C++11 support or later)
-
-### Compile any project
-```bash
-cd Project1-MarketDataAnalyzer
-g++ MarketDataAnalyzer.cpp -o MarketDataAnalyzer
-./MarketDataAnalyzer
-
-cd Project2-BlackScholes
-g++ BlackScholes.cpp -o BlackScholes
-./BlackScholes
-
-cd Project3-MonteCarloVaR
-g++ MonteCarloVaR.cpp -o MonteCarloVaR
-./MonteCarloVaR
-```
 
 ## How the Projects Connect
 
@@ -154,15 +174,45 @@ The projects form an integrated risk analysis pipeline:
 1. **Project 1** reads market data and calculates volatility (39.87%) and mean return (1.08%)
 2. **Project 2** uses that volatility as an input to price options on the same stock
 3. **Project 3** uses the same return statistics to simulate portfolio risk via Monte Carlo
+4. **Project 4** connects all three into a single system with user interaction
+
+## How to Run
+
+### Prerequisites
+- C++ compiler (g++ with C++11 support or later)
+
+### Compile and run any project
+```bash
+# Project 1
+cd Project1-MarketDataAnalyzer
+g++ MarketDataAnalyzer.cpp -o MarketDataAnalyzer
+./MarketDataAnalyzer
+
+# Project 2
+cd Project2-BlackScholes
+g++ BlackScholes.cpp -o BlackScholes
+./BlackScholes
+
+# Project 3
+cd Project3-MonteCarloVaR
+g++ MonteCarloVaR.cpp -o MonteCarloVaR
+./MonteCarloVaR
+
+# Project 4 (requires market_data.csv in the same directory)
+cd Project4-MiniRiskSystem
+g++ MiniRiskSystem.cpp -o MiniRiskSystem
+./MiniRiskSystem
+```
 
 ## Technical Skills Demonstrated
-- Modern C++ (C++11/14): smart pointers, move semantics, lambdas
-- Object-Oriented Design: classes, inheritance, polymorphism
-- STL: vectors, maps, algorithms, iterators
-- File I/O and data parsing
-- Mathematical computing: volatility, Black-Scholes, Monte Carlo simulation
-- Random number generation and statistical simulation
+- Modern C++ (C++11/14): smart pointers, move semantics, lambdas, auto
+- Object-Oriented Design: classes, inheritance, polymorphism, encapsulation
+- STL: vectors, maps, algorithms, iterators, numeric
+- File I/O and CSV data parsing
+- Mathematical computing: volatility, Black-Scholes, normal distribution, Greeks
+- Random number generation and Monte Carlo simulation
 - Memory management: dynamic allocation, RAII
+- Software design: modular architecture, component integration
 
 ## Author
 Ayomide — Aspiring Quantitative Risk Analyst
