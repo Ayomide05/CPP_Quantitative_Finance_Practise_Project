@@ -168,13 +168,61 @@ ES  (99%):           570123.22
 
 ---
 
+### Project 5: Multi-Asset Portfolio Optimizer
+Implements Markowitz mean-variance portfolio optimization using Monte Carlo simulation to find optimal asset allocation across multiple stocks.
+
+**Concepts:** Covariance matrix computation, matrix arithmetic, Sharpe ratio optimization, portfolio theory, efficient frontier, random weight generation
+
+**Features:**
+- Multi-asset CSV data loading and return calculation
+- Covariance and correlation matrix computation
+- Monte Carlo portfolio simulation (50,000 random portfolios)
+- Optimal portfolio identification (maximum Sharpe ratio)
+- Minimum volatility portfolio identification
+- Equal weight benchmark comparison
+- Annualised return and volatility scaling
+
+**Sample output:**
+```
+##############################################
+    MULTI-ASSET PORTFOLIO OPTIMIZER
+##############################################
+[1] ASSET SUMMARY
+    Ticker |  Mean Return |   Volatility
+      GTCO |      1.0807% |      2.5113%
+       UBA |      0.6416% |      1.9077%
+    ZENITH |      0.6793% |      1.8415%
+   DANGCEM |      0.5690% |      1.8753%
+      MTNN |      0.5767% |      1.6263%
+
+[2] CORRELATION MATRIX
+              GTCO     UBA  ZENITH DANGCEM    MTNN
+      GTCO    1.00    0.90    0.97    0.99    0.98
+       UBA    0.90    1.00    0.82    0.87    0.87
+
+[3] OPTIMAL PORTFOLIO (Max Sharpe Ratio)
+      GTCO: 88.03%   UBA: 6.21%   ZENITH: 5.00%
+      Sharpe Ratio: 0.4066
+
+[4] MINIMUM VOLATILITY PORTFOLIO
+      MTNN: 88.50%   UBA: 8.23%
+      Annual Volatility: 26.13%
+
+[5] EQUAL WEIGHT PORTFOLIO (Benchmark)
+      Sharpe Ratio: 0.3490
+##############################################
+```
+
+---
+
 ## How the Projects Connect
 
-The projects form an integrated risk analysis pipeline:
-1. **Project 1** reads market data and calculates volatility (39.87%) and mean return (1.08%)
-2. **Project 2** uses that volatility as an input to price options on the same stock
-3. **Project 3** uses the same return statistics to simulate portfolio risk via Monte Carlo
-4. **Project 4** connects all three into a single system with user interaction
+The projects form an integrated quantitative finance pipeline:
+1. **Project 1** reads market data and calculates volatility and mean return
+2. **Project 2** uses that volatility to price options via Black-Scholes
+3. **Project 3** uses return statistics to simulate portfolio risk via Monte Carlo
+4. **Project 4** connects Projects 1–3 into a single interactive risk system
+5. **Project 5** extends to multi-asset analysis with portfolio optimization
 
 ## How to Run
 
@@ -183,36 +231,42 @@ The projects form an integrated risk analysis pipeline:
 
 ### Compile and run any project
 ```bash
-# Project 1
+# Project 1: Market Data Analyzer
 cd Project1-MarketDataAnalyzer
 g++ MarketDataAnalyzer.cpp -o MarketDataAnalyzer
 ./MarketDataAnalyzer
 
-# Project 2
+# Project 2: Black-Scholes Option Pricer
 cd Project2-BlackScholes
 g++ BlackScholes.cpp -o BlackScholes
 ./BlackScholes
 
-# Project 3
+# Project 3: Monte Carlo VaR Engine
 cd Project3-MonteCarloVaR
 g++ MonteCarloVaR.cpp -o MonteCarloVaR
 ./MonteCarloVaR
 
-# Project 4 (requires market_data.csv in the same directory)
+# Project 4: Mini Risk System (requires market_data.csv)
 cd Project4-MiniRiskSystem
 g++ MiniRiskSystem.cpp -o MiniRiskSystem
 ./MiniRiskSystem
+
+# Project 5: Portfolio Optimizer (requires portfolio_data.csv)
+cd Project5-PortfolioOptimizer
+g++ PortfolioOptimizer.cpp -o PortfolioOptimizer
+./PortfolioOptimizer
 ```
 
 ## Technical Skills Demonstrated
 - Modern C++ (C++11/14): smart pointers, move semantics, lambdas, auto
 - Object-Oriented Design: classes, inheritance, polymorphism, encapsulation
 - STL: vectors, maps, algorithms, iterators, numeric
-- File I/O and CSV data parsing
+- File I/O and multi-column CSV data parsing
 - Mathematical computing: volatility, Black-Scholes, normal distribution, Greeks
 - Random number generation and Monte Carlo simulation
+- Portfolio theory: covariance matrices, Sharpe ratio, Markowitz optimization
 - Memory management: dynamic allocation, RAII
-- Software design: modular architecture, component integration
+- Software design: modular architecture, multi-component integration
 
 ## Author
 Ayomide — Aspiring Quantitative Risk Analyst
